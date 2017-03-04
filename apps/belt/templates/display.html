@@ -1,0 +1,78 @@
+<!-- <a class="right" href="/logout">Logout</a>
+<a class="right" href="/travels">back to travels</a> -->
+
+
+			<table><p> All Users </p>
+              <tr>
+                <th>Name</th>
+                <th>Alias</th>
+                <th>Email</th> 
+                <th>Date</th>
+                <th>Plan</th> <!---  Plan = description  -->
+              </tr>
+              {% for stuff in user_list %}
+              <tr>
+              	<td>{{stuff.id}}</td>
+              	<td>{{stuff.name}}</td>
+                <td>{{stuff.alias}}</td>
+                <td>...{{stuff.date}}</td>
+                <td>...{{stuff.user.id}}</td>
+                
+                <!-- <td><a href="products/show/{{stuff.id}}">Show</a></td>
+                <td><a href="products/edit/{{stuff.id}}">Edit</a></td>
+                <td><a href="products/destroy/{{stuff.id}}">delete</a></td> -->
+              </tr>
+              {% endfor %}
+<br>
+  </table>  
+
+	<p>All Quote </p>
+			<table>
+              <tr>
+                <th>id</th>
+                <th>name</th> 
+                <th>username</th>
+                
+              </tr>
+              {% for stuff in quote_list %}
+              <tr>
+              	<td>{{stuff.id}}</td>
+                <td>{{stuff.author}}</td>
+                <td>...{{stuff.review}}</td>
+                <td>{{stuff.user.id}}</td>
+                
+                <!-- <td><a href="products/show/{{stuff.id}}">Show</a></td>
+                <td><a href="products/edit/{{stuff.id}}">Edit</a></td>
+                <td><a href="products/destroy/{{stuff.id}}">delete</a></td> -->
+              </tr>
+              {% endfor %}
+                </table> 
+
+
+
+  <p>All FAvs </p>
+                <table>
+              <tr>
+                <th>id</th>
+                <th>name</th> 
+                <th>username</th>
+                
+              </tr>
+              {% for stuff in quote_list %}
+              <tr>
+                <td>{{stuff.id}}</td>
+                <td>{{stuff.author}}</td>
+                <td>...{{stuff.review}}</td>
+                <td>{{stuff.user.id}}</td>
+                
+                <!-- <td><a href="products/show/{{stuff.id}}">Show</a></td>
+                <td><a href="products/edit/{{stuff.id}}">Edit</a></td>
+                <td><a href="products/destroy/{{stuff.id}}">delete</a></td> -->
+              </tr>
+              {% endfor %}
+                </table> 
+
+
+
+</body>
+</html>

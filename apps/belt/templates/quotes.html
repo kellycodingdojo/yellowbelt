@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>This is the user dashboard</title>
+	<style type="text/css">
+    
+    #all{
+	 overflow-y: scroll;
+	    height: 300px;
+	    width: 250px;
+	    resize: none;
+	    /*margin-left: 400px;*/ 
+	    position: relative;
+	    border: 1px;
+	    display: inline-block;
+    }
+    .add_right td{
+    	margin-left: 20px;
+    }
+
+#favs{
+	 overflow-y: scroll;
+	    height: 300px;
+	    width: 250px;
+	    resize: none;
+	    /*margin-left: 400px;*/ 
+	    position: relative;
+	    border: 1px;
+	    display: inline-block;
+    }
+
+	</style>
+
+</head>
+<body>
+<a class="right" href="/logout">Logout</a>
+
+<h1>Welcome-- {{request.session.theuser}}</h1>
+		<div>
+		<h1>Quotable Quotes</h1>
+		</div>
+			<div id='all'>	
+				{% for stuff in quote_list %}
+				<h3><td> {{stuff.author}}:</td>
+				<td>{{stuff.quote}}</td></h4></h3>
+               <td>Posted By<a href="/users/{{stuff.user.id}}"> {{stuff.user.name}}</a></td><br>
+               	<td class='add_right'><a href="/quotes/{{stuff.id}}">Add To My List</a> </td>
+             
+              		{% endfor %}
+			</div>
+			<h2>Contribute a Quote</h2>
+						{% if messages %}
+				<p>{% for stuff in messages %}</p>
+						{{stuff}} 
+				<p> {% endfor %}</p>
+						{% endif %}	
+	      <form action="/send_quote" method="post">
+	        {% csrf_token %}
+	        <p>Quoted By <input type="text" name="author" value=""></p>
+	        The Quote <br><textarea rows="4" cols="30" name="quote">Enter quote Dude!</textarea><br>
+	        <button type="submit" name="button">Submit</button>
+	      </form>
+
+		
+		<div id='favs'>	
+			<h1>Your Favorites</h1>
+
+			{% for stuff in fav_list %}
+				<h2>{{stuff}}</h2>
+				<h3><td> {{stuff.user.author}}:</td>
+				<td>{{stuff.quote.quote}}</td></h3>
+         		<td>{{stuff.user.quote}}</td></h3>
+         		<td>Posted By<a href="/users/{{stuff.user.id}}"> {{stuff.user.name}}</a></td><br>
+             <p><a href="/delete/{{stuff.id}}">Remove Fav</a></p>
+              		{% endfor %}
+		</div>
+
+
+
+</body>
+</html>

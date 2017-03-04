@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>This is the users Page</title>
+</head>
+<body>
+
+
+<h1>Working</h1>
+
+<a href="/quotes">Home: </a> |  <a href="/logout">Logout: </a>
+	<p>Posted By: {{user.name}}</p>
+	<p>Total reviews: {{total_reviews.count}}</p>
+
+
+
+	{% for stuff in quote %}
+      <fieldset>
+        <p>{{stuff.author}}:  {{stuff.quote}}</a></p>
+      </fieldset>
+    {% endfor %}
+    
+
+</body>
+</html>

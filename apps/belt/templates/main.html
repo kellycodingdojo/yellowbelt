@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login and Registration Page</title>
+</head>
+<body>
+<h1>Welcome</h1>
+
+	
+    <fieldset>
+      <h2>Registration</h2>
+      <form action="/register" method="post">
+        {% csrf_token %}
+        <p>Name: <input type="text" name="name" value=""></p>
+        <p>alias: <input type="text" name="alias" value=""></p>
+        <p>Email: <input type="text" name="email" value=""></p>
+        <p>Password: <input type="Password" name="password" value=""></p>
+        <p>Confirm Password: <input type="Password" name="confirm" value=""></p>
+        <p>Birthday<input type="date" name="date"></p>
+        <button type="submit" name="button">Register</button>
+      </form>
+    </fieldset>
+
+    {% if messages %}
+      {% for message in messages %}
+        <p class="{{message.tags}}">{{message}}</p>
+      {% endfor %}
+    {% endif %}
+    <h2>Login</h2>
+    <fieldset>
+      <form action="/login" method="post">
+        {% csrf_token %}
+        <p>Email: <input type="text" name="email" value=""></p>
+        <p>Password: <input type="Password" name="password" value=""></p>
+        <button type="submit" name="button">Login</button>
+      </form>
+    </fieldset>
+
+</body>
+</html>
